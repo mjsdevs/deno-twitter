@@ -25,7 +25,7 @@ export default {
       const body = await request.body();
 
       const {
-        name: nameBody = '',
+        name = '',
         username: usernameBody,
         email: emailBody,
         password,
@@ -39,7 +39,6 @@ export default {
         return;
       }
 
-      const name = nameBody.toLowerCase();
       const username = usernameBody.toLowerCase();
       const email = emailBody.toLowerCase();
             
