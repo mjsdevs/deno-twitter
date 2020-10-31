@@ -25,20 +25,25 @@ export default {
       const body = await request.body();
 
       const {
-        name,
-        username,
-        email,
-        password,
+        name: nameBody = '',
+        username: usernameBody,
+        email: emailBody,
+        password: passwordBody,
       } = await body.value;
   
-      if (!username || !email || !password) {
+      if (!usernameBody || !emailBody || !passwordBody) {
         response.body = { 
           message: 'username, email and password fields are required',
         };
         
         return;
       }
-      
+
+      const name = nameBody.toLowerCase();
+      const username = usernameBody.toLowerCase();
+      const email = emailBody.toLowerCase();
+      const password = passwordBody.toLowerCase();
+            
       const findExistentUser = await User.findOne({
         $or: [
           { username },
@@ -46,7 +51,6 @@ export default {
         ],
       });
   
-
       if (findExistentUser) {
         response.body = { 
           message: 'username or email already in use',
