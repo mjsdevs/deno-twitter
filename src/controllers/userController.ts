@@ -142,4 +142,17 @@ export default {
       response.body = error;
     }
   },
-};
+  detail:  async ({
+    response, params 
+  }: { response: any, params: any }) => {
+    try {
+      const { username } = params;
+
+      const detailedUser = await User.findOne({ username });
+
+      response.body = detailedUser;
+    } catch (error) {
+      response.body = error;
+    }
+  }
+  };
