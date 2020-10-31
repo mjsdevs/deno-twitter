@@ -120,7 +120,7 @@ export default {
         { ...userFound, name, password },
       );
 
-      const findUpdatedUser = await User.findOne({ username })
+      const findUpdatedUser = await User.findOne({ username });
       
       response.body = findUpdatedUser;
     } catch (error) {
