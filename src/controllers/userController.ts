@@ -129,11 +129,13 @@ export default {
       return;
     }
   },
-  delete: async ({ response, params }: { response: any, params: any }) => {
+  delete: async ({
+    response, params 
+  }: { response: any, params: any }) => {
     try {
       const { username } = params;
 
-      await User.deleteOne({ username })
+      await User.deleteOne({ username });
 
       response.body = { message: "User deleted" }
     } catch (error) {
