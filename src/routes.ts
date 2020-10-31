@@ -6,6 +6,7 @@ const router = new Router();
 
 router
   .get('/users', userController.list)
-  .post('/users', userController.create);
+  .post('/users', userController.create)
+  .patch('/users/:username', userController.update);
 
 export default router;

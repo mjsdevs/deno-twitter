@@ -76,4 +76,58 @@ export default {
       return;
     }
   },
+  update: async ({
+    request,
+    response,
+    params,
+  }: { request: any, response: any, params: any }) => {
+    try {
+      const { username } = params;
+
+      if (!request.hasBody) {
+        response.body = { message: 'No body provided' };
+
+        return;
+      }
+      
+      const body = request.body();
+
+      const {
+        name = '',
+        password,
+      } = await body.value;
+
+      if (!name && !password) {
+        response.body = { 
+          message: 'No changes were made',
+        };
+        
+        return;
+      } 
+
+      if (!username) {
+        response.body = {
+          message: 'No user found'
+        };
+
+        return;
+      }
+
+      const userFound = await User.findOne({ username })
+
+      await User.updateOne(
+        { username },
+        { ...userFound, name, password },
+      );
+
+      const findUpdatedUser = await User.findOne({ username })
+      
+      response.body = findUpdatedUser;
+
+    } catch (error) {
+      response.body = { message: error.message };
+  
+      return;
+    }
+  },
 };
