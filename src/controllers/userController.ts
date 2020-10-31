@@ -31,8 +31,6 @@ export default {
         password,
       } = await body.value;
   
-      console.log(body);
-  
       if (!username || !email || !password) {
         response.body = { 
           message: 'username, email and password fields are required',
