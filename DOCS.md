@@ -56,7 +56,7 @@ Detail user
   "email": "kbmelo@outlook.com"
 }
 ```
-### PATCH /users/:id
+### PATCH /users/:username
 Update user info
 #### request body:
 ```json
