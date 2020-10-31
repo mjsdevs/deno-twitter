@@ -15,19 +15,3 @@ interface TweetScheema {
 };
 
 export default database.collection<TweetScheema>('Tweets');
-
-
-// Tweet
-//   userId: {
-//     type: ObjectId(User),
-//     required: true,
-//   },
-//   content: {
-//     type: string,
-//     required: true,
-//   },
-//   likes: [ObjectId(User)]
-//   createdAt: {
-//     type: number,
-//     required: true,
-//   },
