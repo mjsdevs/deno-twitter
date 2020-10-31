@@ -28,10 +28,10 @@ export default {
         name: nameBody = '',
         username: usernameBody,
         email: emailBody,
-        password: passwordBody,
+        password,
       } = await body.value;
   
-      if (!usernameBody || !emailBody || !passwordBody) {
+      if (!usernameBody || !emailBody || !passowrd) {
         response.body = { 
           message: 'username, email and password fields are required',
         };
@@ -42,7 +42,6 @@ export default {
       const name = nameBody.toLowerCase();
       const username = usernameBody.toLowerCase();
       const email = emailBody.toLowerCase();
-      const password = passwordBody.toLowerCase();
             
       const findExistentUser = await User.findOne({
         $or: [
