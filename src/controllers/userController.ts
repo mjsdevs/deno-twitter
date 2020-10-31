@@ -23,7 +23,7 @@ export default {
       }
   
       const body = await request.body();
-  
+
       const {
         name,
         username,
@@ -36,6 +36,22 @@ export default {
           message: 'username, email and password fields are required',
         };
         
+        return;
+      }
+      
+      const findExistentUser = await User.findOne({
+        $or: [
+          { username },
+          { email },
+        ],
+      });
+  
+
+      if (findExistentUser) {
+        response.body = { 
+          message: 'username or email already in use',
+        };
+
         return;
       }
   
