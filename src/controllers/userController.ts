@@ -31,7 +31,7 @@ export default {
         password,
       } = await body.value;
   
-      if (!usernameBody || !emailBody || !passowrd) {
+      if (!usernameBody || !emailBody || !password) {
         response.body = { 
           message: 'username, email and password fields are required',
         };
