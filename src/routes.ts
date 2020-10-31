@@ -8,6 +8,7 @@ router
   .get('/users', userController.list)
   .post('/users', userController.create)
   .patch('/users/:username', userController.update)
-  .delete('/users/:username', userController.delete);
+  .delete('/users/:username', userController.delete)
+  .get('/users/:username', userController.detail);
 
 export default router;
