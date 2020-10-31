@@ -120,14 +120,26 @@ export default {
         { ...userFound, name, password },
       );
 
-      const findUpdatedUser = await User.findOne({ username })
+      const findUpdatedUser = await User.findOne({ username });
       
       response.body = findUpdatedUser;
-
     } catch (error) {
       response.body = { message: error.message };
   
       return;
+    }
+  },
+  delete: async ({
+    response, params 
+  }: { response: any, params: any }) => {
+    try {
+      const { username } = params;
+
+      await User.deleteOne({ username });
+
+      response.body = { message: "User deleted" }
+    } catch (error) {
+      response.body = error;
     }
   },
 };
